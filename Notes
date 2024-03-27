@@ -1,0 +1,141 @@
+Networking
+security
+Images
+Conatiners
+volumes
+Logging
+Whar are NameSpaces and cgroups?
+Isolations on the linux machine are created by kernel feature called namespace
+Resources(ram,cpu,disk) on the linux maxhine are shared by kernel feature called cgroups
+What are docker underlying components?
+Client=>cli =docker
+Daemon=>dockerd
+Containerd
+Runc
+What is the lifetime of  a container?
+The time which your cmd/entrypoint is alive
+
+
+
+Explain about docker networking?
+Drivers define networking
+None
+hostNetworknanoe
+Bridge(conatiners within a system/node)
+Overlay(communicate containers in two different nodes/systems)
+MacOverlay
+IpVlan(still under construction)
+
+Docker network create –d bridge –ip-range 172.31.0.0/16  --subnet 172.31.1.0/24 <mynetwork>
+Docker container run –d –network mynetwork c2(here d is driver,c2 is dns name)
+
+
+
+Docker volume create/delete/attach
+Docker volume create <myvolume>
+Docker container run –mount “type=volume,source=myvolume,destination=/var/log”   <myimage>
+
+
+
+
+
+Dockerfile
+
+FROM=> base image
+LABEL = > add metadata
+RUN=> instaructions that will be executing while image is building
+VOLUME => create volume 
+ADD/COPY=>
+EXPOSE=> is used to expose/open port on which application is running
+CMD/ENTRYPOINT=> 
+CMD is executing while running container   and  is used to be overwritten(users can change)
+
+ENV=> used even after building images
+ex:
+FROM ubuntu:trusty
+ENV test="krishna"
+CMD ["echo", "hello"]
+$docker image build testenv .
+$docker container run -it testenv /bin/bash
+#set | more
+ARG=> can be use while building images
+USER=> it creates the user and we will switch a user
+WORKDIR=> change your starting directory(where you lgin in conatiner) to something else
+
+ex:
+FROM ubuntu:trusty
+RUN apt-get update && apt-get install git -y
+USER git
+WORKDIR /home/git
+CMD ["echo", "hi"] 
+
+
+
+FROM ubuntu:trusty
+CMD ["echo", "hi"]
+$docker image build -t testcmd .
+$docker conatiner run testcmd 
+hi
+$docker conatiner run testcmd echo hello
+hello
+ENTRYPOINT=>freezes the application which gets started while you are running
+ex:
+FROM ubuntu:trusty
+ENTRYPOINT ["echo", "hi"]
+$docker image build -t testent .
+$docker conatiner run testent 
+hi
+$docker conatiner run testcmd echo hello
+hi echo hello=> here it become an argument to entry point
+recommended:
+FROM ubuntu:trusty
+ENTRYPOINT ["echo"]
+CMD ["hello"]
+$docker image build -t entcmd .
+$docker container run entcmd
+hello
+
+
+
+                                 Contents/Syllabus
+                                 
+                                 Core concepts(Dockerfile,Image)
+Installation,conafiguration and validation
+Computing(Containers)
+Storage
+Networking
+Security
+Monitoring
+Logging
+Cluster maintenance
+Troubleshooting
+Advance concepts(Application Life cycle management
+
+
+features
+Docker containers are pretty light weight
+They are very scalable
+
+
+
+Terminology
+Dockerfile
+Image
+Container
+Docker compose
+Docker Engine
+Docker daemon
+Docker CLI
+Containerd
+
+
+Components
+Server
+Docker Daemon(Docker Engine)
+
+Client
+Docker CLI
+
+Docker REST API
+
+

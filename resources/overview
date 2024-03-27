@@ -1,0 +1,4 @@
+$docker --help
+$docker info => to display system wide information
+$docker version => to check docker version
+

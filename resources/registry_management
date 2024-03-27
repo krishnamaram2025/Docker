@@ -1,0 +1,1 @@
+$docker login -u <user_name> -p <pass_word> <docker_trusted_registry_url>

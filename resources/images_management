@@ -1,0 +1,8 @@
+$docker image ls 
+$docker image pull
+$docker image tag
+$docker tag <old_repo:tag_name> <new-repo:tag_name>
+$docker image push <new_repo:tag_name>
+$docker image rm <image_id>
+$docker image prune -a
+$docker system prune -a

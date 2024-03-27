@@ -1,0 +1,3 @@
+$docker network ls => to list networks
+$docker network create <network_name> => to create new network
+$docker network inspect  => to inspect network

@@ -1,0 +1,13 @@
+$docker container ls -a => to list all(running + stop) containers
+$docker container logs <container_name> => to fetch logs of a container
+$docker container restart <container_name> => to restart container
+$docker container exec -it <container_name> /bin/sh  => to logon to running container
+$docker container inspect <container_name> | grep -i created  => to find when container created
+
+$docker container kill <container_name> => to kill container
+docker kill $(docker ps -q)
+
+$docker container rm <container_name> => to remove container
+$docker container rm $(docker ps -q -f status=exited) => to remove all exited containers
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
