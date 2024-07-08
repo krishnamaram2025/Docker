@@ -26,8 +26,9 @@ Option 2:
 $sudo yum install docker -y
 
 Step 3:
-$sudo usermod -aG docker <user-name> or sudo chmod 666 /var/run/docker.sock
-
+```
+sudo systemctl start docker && sudo usermod -aG docker $USER && sudo chmod 666 /var/run/docker.sock
+```
 
 EXecution Flow
 =========================
